@@ -66,9 +66,11 @@
 						<td><%=map.get("subtotal") %></td>
 						<td><%=map.get("memo") %></td>
 						<td>
+							<% if (Boolean.parseBoolean(map.get("flag").toString())) { %>
 							<button type="button"
 									onclick="location.href='${pageContext.request.contextPath}/servlet/drink?deleteRowId=<%=rowId %>';" 
 									class="pure-button">刪除</button>
+							<% } %>		
 						</td>
 					</tr>
 					<% rowId++; %>

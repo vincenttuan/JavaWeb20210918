@@ -63,8 +63,10 @@ public class DrinkHttpServlet extends HttpServlet {
 		boolean check = drinkService.updateStock(id, amount);
 		if(check) {
 			map.put("memo", "訂購成功");
+			map.put("flag", "true");
 		} else {
 			map.put("memo", "庫存不足");
+			map.put("flag", "false");
 		}
 		// 加入到訂單明細列表
 		list.add(map);
