@@ -27,6 +27,8 @@ public class DrinkHttpServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/drink_form.jsp");
+		req.setAttribute("list", list);
+		req.setAttribute("drinks", drinkService.queryAll());
 		rd.forward(req, resp);
 	}
 
@@ -55,6 +57,7 @@ public class DrinkHttpServlet extends HttpServlet {
 		
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/drink_form.jsp");
 		req.setAttribute("list", list);
+		req.setAttribute("drinks", drinkService.queryAll());
 		rd.forward(req, resp);
 	}
 	

@@ -1,5 +1,7 @@
+<%@ page import="java.util.*"%>
+<%@ page import="entity.Drink"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*" %>
+	pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +16,18 @@
 		action="${pageContext.request.contextPath}/servlet/drink">
 		<fieldset>
 			<legend>Drink 訂單</legend>
-			品名: <select name="id">
-				<option value="1">珍奶</option>
-				<option value="2">咖啡</option>
-				<option value="3">綠茶</option>
+			品名: 
+			<select name="id">
+				<% if (request.getAttribute("drinks") != null) { %>
+					<% for(Object item : (List)request.getAttribute("drinks")) { %>
+						<% Drink drink = (Drink)item; %>
+						<option value="<%=drink.getId() %>">
+							<%=drink.getName() %>
+							$<%=drink.getPrice() %> 
+							(庫存: <%=drink.getStock() %>)  
+						</option>
+					<% } %>
+				<% } %>
 			</select>
 			<p />
 			數量: <input type="number" name="amount">
@@ -29,6 +39,8 @@
 
 	${ list }
 	
+	<p />
+	訂單明細:
 	<table class="pure-table pure-table-bordered">
 		<thead>
 			<tr>
