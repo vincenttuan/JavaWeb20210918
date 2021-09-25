@@ -12,7 +12,7 @@
 	<form class="pure-form">
 		<fieldset>
 			<legend>Circle 計算結果</legend>
-			${ list }
+			${ result }
 			<p />
 			<button type="button"
 					onclick="location.href='${pageContext.request.contextPath}/servlet/circlecalc';" 
