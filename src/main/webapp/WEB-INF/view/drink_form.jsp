@@ -14,9 +14,9 @@
 			<legend>Drink 訂單</legend>
 			品名: 
 			<select name="id">
-				<option id="1">珍奶</option>
-				<option id="2">咖啡</option>
-				<option id="3">綠茶</option>
+				<option value="1">珍奶</option>
+				<option value="2">咖啡</option>
+				<option value="3">綠茶</option>
 			</select>
 			<p />
 			數量: 
@@ -26,7 +26,7 @@
 		</fieldset>
 	</form>
 	
-	${ result }
+	${ list }
 	
 	
 </body>
