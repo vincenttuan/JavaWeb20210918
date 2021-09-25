@@ -14,9 +14,17 @@ public class BmiCalcHttpServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter out = resp.getWriter();
+		// 取得參數資料
+		String height = req.getParameter("height"); // 取得表單 height 欄位的資料
+		String weight = req.getParameter("weight"); // 取得表單 weight 欄位的資料
+		// 轉型
+		double h = Double.parseDouble(height);
+		double w = Double.parseDouble(weight);
+		// 計算 bmi
+		double bmi = w / Math.pow(h/100, 2);
 		
-		out.print("success");
+		PrintWriter out = resp.getWriter();
+		out.print(bmi);
 	}
 	
 }

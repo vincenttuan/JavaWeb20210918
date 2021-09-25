@@ -9,7 +9,7 @@
 </head>
 <body style="padding: 15px">
 	
-	<form class="pure-form" method="post" action="/JavaWeb20210918/servlet/bmicalc">
+	<form class="pure-form" method="post" action="${pageContext.request.contextPath}/servlet/bmicalc">
 		<fieldset>
 			<legend>BMI 輸入表單</legend>
 			身高: <input type="number" placeholder="請輸入身高" name="height"><p />
