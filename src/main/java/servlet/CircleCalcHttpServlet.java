@@ -25,6 +25,24 @@ public class CircleCalcHttpServlet extends HttpServlet {
 		String[] items = req.getParameterValues("item");
 		System.out.println("radius: " + radius);
 		System.out.println("items: " + Arrays.toString(items));
+		
+		double r = Double.parseDouble(radius);
+		for(String item : items) {
+			switch (item) {
+				case "A":
+					System.out.println("直徑:" + (2*r));
+					break;
+				case "B":
+					System.out.println("圓周:" + ((2*r) * Math.PI));
+					break;
+				case "C":
+					System.out.println("面積:" + (Math.PI * Math.pow(r, 2)));
+					break;
+				case "D":
+					System.out.println("體積:" + (4/3 * Math.PI * Math.pow(r, 3)));
+					break;	
+			}
+		}
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/circle_result.jsp");
 		rd.forward(req, resp);
 	}
