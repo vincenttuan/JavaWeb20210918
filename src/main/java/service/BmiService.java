@@ -1,7 +1,6 @@
 package service;
 
 public class BmiService {
-	
 	public double getBmi(String height, String weight) {
 		double h = Double.parseDouble(height);
 		double w = Double.parseDouble(weight);

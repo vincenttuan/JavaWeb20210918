@@ -35,5 +35,6 @@ public class BmiCalcHttpServlet extends HttpServlet {
 		req.setAttribute("bmi", bmi); // 建立一個 request 變數名叫 bmi 裡面放入 bmi 的計算結果
 		rd.forward(req, resp); // 重新導向
 	}
+
 	
 }

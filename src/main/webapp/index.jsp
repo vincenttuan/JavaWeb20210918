@@ -14,6 +14,8 @@
 		<li><a href="./servlet/cycle?r=10">CycleServlet</a></li>
 		<li><a href="./servlet/random?n=5">RandomServlet</a></li>
 		<li><a href="./servlet/lotto">LottoHttpServlet</a></li>
+		<li><a href="./form/bmi_form.jsp">bmi_form.jsp</a></li>
+		<li><a href="./servlet/circlecalc">CircleCalcHttpServlet</a></li>
 	</ol>
 </body>
 </html>
