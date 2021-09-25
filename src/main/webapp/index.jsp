@@ -13,6 +13,7 @@
 		<li><a href="./servlet/bmi?h=170&w=60">BmiServlet</a></li>
 		<li><a href="./servlet/cycle?r=10">CycleServlet</a></li>
 		<li><a href="./servlet/random?n=5">RandomServlet</a></li>
+		<li><a href="./servlet/lotto">LottoHttpServlet</a></li>
 	</ol>
 </body>
 </html>
