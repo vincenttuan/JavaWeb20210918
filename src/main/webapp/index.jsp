@@ -16,6 +16,7 @@
 		<li><a href="./servlet/lotto">LottoHttpServlet</a></li>
 		<li><a href="./form/bmi_form.jsp">bmi_form.jsp</a></li>
 		<li><a href="./servlet/circlecalc">CircleCalcHttpServlet</a></li>
+		<li><a href="./servlet/drink">DrinkHttpServlet</a></li>
 	</ol>
 </body>
 </html>
