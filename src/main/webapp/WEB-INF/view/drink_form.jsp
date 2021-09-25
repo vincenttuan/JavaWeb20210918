@@ -44,24 +44,34 @@
 	<table class="pure-table pure-table-bordered">
 		<thead>
 			<tr>
+				<th>#</th>
 				<th>id</th>
 				<th>name</th>
 				<th>amount</th>
 				<th>subtotal</th>
 				<th>memo</th>
+				<th>delete</th>
 			</tr>
 		</thead>
 		<tbody>
+			<% int rowId = 0; %>
 			<% if (request.getAttribute("list") != null) { %>
 				<% for(Object item : (List)request.getAttribute("list")) { %>
 					<% Map map = (Map)item; %>
 					<tr>
+						<td><%=rowId %></td>
 						<td><%=map.get("id") %></td>
 						<td><%=map.get("name") %></td>
 						<td><%=map.get("amount") %></td>
 						<td><%=map.get("subtotal") %></td>
 						<td><%=map.get("memo") %></td>
+						<td>
+							<button type="button"
+									onclick="location.href='${pageContext.request.contextPath}/servlet/drink?deleteRowId=<%=rowId %>';" 
+									class="pure-button">刪除</button>
+						</td>
 					</tr>
+					<% rowId++; %>
 				<% } %>
 			<% } %>
 		</tbody>
