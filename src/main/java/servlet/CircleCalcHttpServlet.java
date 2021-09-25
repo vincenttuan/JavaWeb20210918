@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +23,8 @@ public class CircleCalcHttpServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String radius = req.getParameter("radius");
 		String[] items = req.getParameterValues("item");
+		System.out.println("radius: " + radius);
+		System.out.println("items: " + Arrays.toString(items));
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/circle_result.jsp");
 		rd.forward(req, resp);
 	}
