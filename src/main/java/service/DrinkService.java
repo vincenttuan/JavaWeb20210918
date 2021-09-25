@@ -31,7 +31,7 @@ public class DrinkService {
 	}
 	
 	// 取得飲料物件
-	public Drink getPrice(Integer id) {
+	public Drink getDrink(Integer id) {
 		Drink drink = drinks.stream().filter(d -> d.getId() == id).findFirst().get();
 		return drink;
 	}
