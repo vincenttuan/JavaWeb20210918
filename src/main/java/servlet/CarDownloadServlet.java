@@ -32,11 +32,11 @@ public class CarDownloadServlet extends HttpServlet {
 		
 		// 3. 讓瀏覽器直接下載檔案
 		// 3.1. 設定網際網路媒體類型 MIME type
-		String mimiType = Files.probeContentType(file.toPath());
-		System.out.println("mimiType: " + mimiType);
-		if(mimiType == null) {
-			// 若無法判斷 mini type, 則可以任意設定一個二進制檔案(強迫瀏覽器下載檔案)
-			mimiType = "application/oct-stream";
+		String mimeType = Files.probeContentType(file.toPath());
+		System.out.println("mimeType: " + mimeType);
+		if(mimeType == null) {
+			// 若無法判斷 mime type, 則可以任意設定一個二進制檔案(強迫瀏覽器下載檔案)
+			mimeType = "application/oct-stream";
 		}
 		// 3.2 設定下檔檔案標頭資料(設定給瀏覽器看)
 		String headerKey = "Content-Disposition";
