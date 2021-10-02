@@ -55,6 +55,7 @@ public class CarUploadServlet extends HttpServlet {
 		out.print("car_cc = " + car_cc);
 		
 		// 重導
+		// getServletContext().getContextPath() 指的是 /JavaWeb20210918
 		resp.sendRedirect(getServletContext().getContextPath() + "/servlet/car");
 	}
 	

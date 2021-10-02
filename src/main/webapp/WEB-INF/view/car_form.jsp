@@ -33,7 +33,7 @@
 	<table class="pure-table pure-table-bordered">
 		<thead>
 			<tr>
-				<th>index</th>
+				<th>row id</th>
 				<th>file name</th>
 				<th>download</th>
 				<th>delete</th>
