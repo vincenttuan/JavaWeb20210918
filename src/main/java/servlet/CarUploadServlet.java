@@ -53,6 +53,9 @@ public class CarUploadServlet extends HttpServlet {
 				
 		out.print("car_name = " + car_name);
 		out.print("car_cc = " + car_cc);
+		
+		// 重導
+		resp.sendRedirect(getServletContext().getContextPath() + "/servlet/car");
 	}
 	
 }

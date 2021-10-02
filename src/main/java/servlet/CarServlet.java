@@ -1,10 +1,12 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +16,18 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/servlet/car")
 public class CarServlet extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		File file = new File("c:/upload");
+		String[] fileNames = file.list();
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/car_form.jsp");
+		req.setAttribute("fileNames", fileNames);
+		rd.forward(req, resp);
+		
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
