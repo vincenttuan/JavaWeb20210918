@@ -55,7 +55,7 @@
 					</td>
 					<td>
 						<button type="button"
-								onclick="" 
+								onclick="location.href='${pageContext.request.contextPath}/servlet/car_delete?car_photo=<%=fileNames[i] %>';"  
 								class="pure-button">刪除</button>
 					</td>
 				</tr>
