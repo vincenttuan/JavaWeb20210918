@@ -14,13 +14,14 @@
 	3、enctype="text/plain"
 	-->
 	<form class="pure-form"
-		  enctype="application/x-www-form-urlencoded"
+		  enctype="multipart/form-data"
 		  method="post" 
 		  action="${pageContext.request.contextPath}/servlet/car">
 		<fieldset>
 			<legend>Car 輸入表單</legend>
 			Name: <input type="text" placeholder="請輸入 name" name="car_name"><p />
 			CC: <input type="number" placeholder="請輸入 cc" name="car_cc"><p />
+			Photo: <input type="file" name="car_photo"><p />
 			<button type="submit" class="pure-button pure-button-primary">傳送</button>
 			<button type="reset" class="pure-button pure-button-primary">清除</button>
 		</fieldset>

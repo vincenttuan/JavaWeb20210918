@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,16 @@ public class CarServlet extends HttpServlet {
 		resp.setContentType("text/html;charset=UTF-8");
 		
 		PrintWriter out = resp.getWriter();
-		
+		// 顯示 HTTP 文件 Header(Part 2)
+		Enumeration headerNames = req.getHeaderNames();
+		while (headerNames.hasMoreElements()) {
+			String headerName = headerNames.nextElement().toString();
+			String headerValue = req.getHeader(headerName);
+			out.println(headerName + " = " + headerValue + "<br />");
+		}
+		out.println("<hr>");
+		out.println(req.getHeader("accept-language"));
+		out.println("<hr>");
 		// 顯示 HTTP 文件內容(Part 4)
 		InputStreamReader isr = new InputStreamReader(req.getInputStream()); // 取得 HTTP 文件串流
 		char[] buffer = new char[1];
