@@ -27,6 +27,8 @@ public class DrinkHttpServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String deleteRowId = req.getParameter("deleteRowId");
+		String updateRowId = req.getParameter("updateRowId");
+		// 刪除程序
 		if(deleteRowId != null) {
 			// 進行刪單處理
 			// 取得單號
@@ -40,6 +42,27 @@ public class DrinkHttpServlet extends HttpServlet {
 			// 移除訂單
 			list.remove(index);
 		}
+		
+		//修改程序
+		if(updateRowId != null) {
+			// 進行修改處理
+			// 取得修改數量
+			int updateAmount = Integer.parseInt(req.getParameter("updateAmount"));
+			// 取得單號
+			int index = Integer.parseInt(updateRowId);
+			// 得到該筆定單
+			Map item = list.get(index);
+			// 取得原本的數量
+			int oldAmount = Integer.parseInt(item.get("amount").toString());
+			// 修改修改數量
+			item.put("amount", updateAmount);
+			// 回滾庫存
+			// 回滾的數量
+			int rollbackAmount = updateAmount - oldAmount;
+			int id = Integer.parseInt(item.get("id").toString());
+			drinkService.updateStock(id, rollbackAmount);
+		}
+		
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/drink_form.jsp");
 		req.setAttribute("list", list);
 		req.setAttribute("drinks", drinkService.queryAll());

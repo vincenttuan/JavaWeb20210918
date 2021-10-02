@@ -9,6 +9,20 @@
 <title>Drink Form</title>
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+	
+	<script>
+		
+		function updateAmount(id, amount) {
+			var updateAmount = prompt("修改 " + id + " 號訂單的數量", amount);
+			console.log(updateAmount);
+			var updateUrl = '${pageContext.request.contextPath}/servlet/drink?updateRowId=' + id + '&updateAmount=' + updateAmount;
+			console.log(updateUrl);
+			// 傳送
+			location.href = updateUrl;
+		}
+	
+	</script>
+	
 </head>
 <body style="padding: 15px">
 
@@ -50,7 +64,8 @@
 				<th>amount</th>
 				<th>subtotal</th>
 				<th>memo</th>
-				<th>delete</th>
+				<th>update</th>
+				<th>delete</th>				
 			</tr>
 		</thead>
 		<tbody>
@@ -67,7 +82,14 @@
 						<td><%=map.get("memo") %></td>
 						<td>
 							<% if (Boolean.parseBoolean(map.get("flag").toString())) { %>
-							<button type="button"
+								<button type="button"
+									onclick="updateAmount(<%=rowId %>, <%=map.get("amount") %>)" 
+									class="pure-button">修改數量</button>
+							<% } %>		
+						</td>
+						<td>
+							<% if (Boolean.parseBoolean(map.get("flag").toString())) { %>
+								<button type="button"
 									onclick="location.href='${pageContext.request.contextPath}/servlet/drink?deleteRowId=<%=rowId %>';" 
 									class="pure-button">刪除</button>
 							<% } %>		
