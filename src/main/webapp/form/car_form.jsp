@@ -16,7 +16,7 @@
 	<form class="pure-form"
 		  enctype="multipart/form-data"
 		  method="post" 
-		  action="${pageContext.request.contextPath}/servlet/car">
+		  action="${pageContext.request.contextPath}/servlet/car_upload">
 		<fieldset>
 			<legend>Car 輸入表單</legend>
 			Name: <input type="text" placeholder="請輸入 name" name="car_name"><p />
