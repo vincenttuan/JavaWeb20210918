@@ -58,8 +58,8 @@
 	<table class="pure-table pure-table-bordered">
 		<thead>
 			<tr>
-				<th>#</th>
-				<th>id</th>
+				<th>row id(訂單編號)</th>
+				<th>product id(商品編號)</th>
 				<th>name</th>
 				<th>amount</th>
 				<th>subtotal</th>
@@ -77,7 +77,17 @@
 						<td><%=rowId %></td>
 						<td><%=map.get("id") %></td>
 						<td><%=map.get("name") %></td>
-						<td><%=map.get("amount") %></td>
+						<td>
+							<% if (Boolean.parseBoolean(map.get("flag").toString())) { %>
+								<span style="cursor: pointer;text-decoration-color:blue;text-decoration: underline;"
+									  title="按我一下可以修改數量" 
+									  onclick="updateAmount(<%=rowId %>, <%=map.get("amount") %>)">
+									<%=map.get("amount") %>
+								</span>
+							<% } else { 
+									out.print(map.get("amount"));
+							   } %>
+						</td>
 						<td><%=map.get("subtotal") %></td>
 						<td><%=map.get("memo") %></td>
 						<td>
