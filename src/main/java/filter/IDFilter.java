@@ -16,9 +16,17 @@ public class IDFilter extends HttpFilter {
 	@Override
 	protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
-		PrintWriter out = resp.getWriter();
-		//out.print("Stop: IDFilter");
-		super.doFilter(req, resp, chain);
+		
+		String id = req.getParameter("id");
+		// 檢查 id
+		if(id.length() == 10) {
+			// pass
+			chain.doFilter(req, resp);
+		} else {
+			PrintWriter out = resp.getWriter();
+			out.print("Stop: ID Error");
+		}
+		
 	}
 	
 }
