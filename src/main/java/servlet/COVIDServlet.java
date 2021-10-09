@@ -22,9 +22,11 @@ public class COVIDServlet extends HttpServlet {
 		Covid covid = new Covid(id, vaccine);
 		covidService.append(covid);
 		
-		PrintWriter out = resp.getWriter();
-		out.print("COVID Append OK:<p />");
-		out.print(covidService.list());
+		// Client 端重導
+		// 將要執行的 url 重拋給瀏覽器
+		// 瀏覽器接到後會自動執行命令
+		// ps: getServletContext().getContextPath() = /JavaWeb20210918
+		resp.sendRedirect("http://localhost:8080" + getServletContext().getContextPath() + "/servlet/covid/list");
 	}
 	
 }
