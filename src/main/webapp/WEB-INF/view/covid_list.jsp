@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +23,12 @@
 					<th>Vaccine</th>
 				</thead>
 				<tbody>
-					<td colspan="2"> ${ covids } </td>
+					<c:forEach var="covid" items="${ covids }">
+					<tr>
+						<td>${ covid.id }</td>
+						<td>${ covid.vaccine }</td>
+					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 
