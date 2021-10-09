@@ -12,7 +12,7 @@
 	<form class="pure-form" method="post" action="${pageContext.request.contextPath}/servlet/covid/append">
 		<fieldset>
 			<legend>COVID 意願表單</legend>
-			ID: <input type="text" placeholder="請輸入ID" name="id"><p />
+			證號: <input type="text" placeholder="請輸入身分證號" name="id"><p />
 			疫苗: <input type="text" placeholder="請輸入疫苗簡稱" name="vaccine"><p />
 			<button type="submit" class="pure-button pure-button-primary">傳送</button>
 			<button type="button" class="pure-button pure-button-primary">查詢</button>

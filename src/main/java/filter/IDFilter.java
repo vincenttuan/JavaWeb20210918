@@ -17,8 +17,8 @@ public class IDFilter extends HttpFilter {
 	protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 		PrintWriter out = resp.getWriter();
-		out.print("Stop: IDFilter");
-		//super.doFilter(req, resp, chain);
+		//out.print("Stop: IDFilter");
+		super.doFilter(req, resp, chain);
 	}
 	
 }
