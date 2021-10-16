@@ -19,6 +19,13 @@ public class SessionResultServlet extends HttpServlet {
 		HttpSession session = req.getSession(false);
 		PrintWriter out = resp.getWriter();
 		out.println("get: ");
+		
+		// 判斷是否有 session
+		if(session == null) {
+			out.println("None session");
+			return;
+		}
+		
 		String sessionId = session.getId();
 		out.println("session id = " + sessionId);
 		// 查看資料
