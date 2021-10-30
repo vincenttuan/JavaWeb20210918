@@ -2,6 +2,7 @@ package rest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -47,13 +48,25 @@ public class BookService {
 	
 	@Path("/")
 	@PUT
-	public String update() {
-		return "update book";
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public String update(@FormParam("id") Integer id, 
+            			 @FormParam("name") String name) {
+		Optional<Book> opt = books.stream()
+								.filter(b -> b.getId() == id)
+								.findAny();
+		if(opt.isPresent()) {
+			Book book = opt.get();
+			book.setName(name);
+			return new Gson().toJson(books);
+		} else {
+			return "update error";
+		}
 	}
 	
 	@Path("/")
 	@DELETE
-	public String delete() {
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public String delete(@FormParam("id") Integer id) {
 		return "delete book";
 	}
 	
