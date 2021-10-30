@@ -16,6 +16,7 @@ public class MyRestApplication extends Application {
 		Set<Class<?>> classes = new LinkedHashSet<>();
 		// 註冊
 		classes.add(HelloService.class); // HelloService 是一個 rest 服務程式
+		classes.add(BmiService.class); // BMIService 是一個 rest 服務程式
 		return classes;
 	}
 	
