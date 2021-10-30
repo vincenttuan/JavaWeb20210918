@@ -24,6 +24,8 @@
 		  action="${pageContext.request.contextPath}/rest/book/">
 		<fieldset>
 			<legend>Book Post</legend>
+			id: <input type="number" name="id"><p />
+			name: <input type="text" name="name"><p />
 			<button type="submit" 
 			        class="pure-button pure-button-primary">傳送</button>
 		</fieldset>
