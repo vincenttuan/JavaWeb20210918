@@ -41,6 +41,9 @@ public class SessionResultServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(); // req.getSession(true)
+		// 根據此 session 物件設定專屬 timeout
+		//session.setMaxInactiveInterval(10); // 10 秒
+		
 		String[] data = req.getParameterValues("data");
 		// 將 data 存放到 session 變數中
 		session.setAttribute("data", data);
