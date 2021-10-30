@@ -17,6 +17,7 @@ public class MyRestApplication extends Application {
 		// 註冊
 		classes.add(HelloService.class); // HelloService 是一個 rest 服務程式
 		classes.add(BmiService.class); // BMIService 是一個 rest 服務程式
+		classes.add(BookService.class); // BookService 是一個 rest 服務程式
 		return classes;
 	}
 	
