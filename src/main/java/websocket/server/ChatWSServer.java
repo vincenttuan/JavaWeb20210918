@@ -26,7 +26,9 @@ public class ChatWSServer {
 	@OnOpen
 	public void onOpen(Session session) {
 		// 回報給 client
-		session.getAsyncRemote().sendText(session.getId());
+		if(session.isOpen()) {
+			session.getAsyncRemote().sendText("true");
+		}
 	}
 	
 	@OnMessage

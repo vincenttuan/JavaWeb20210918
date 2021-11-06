@@ -43,7 +43,15 @@ window.onload = function() {
 		};
 		
 		webSocket.onmessage = function(e) {
-			log.innerHTML = e.data;
+			if(e.data == 'true') {
+				var jsonObj = {
+					nikename: nickname.value,
+					data: '歡迎 ' + nickname.value + ' 的加入'
+				};
+				webSocket.send(JSON.stringify(jsonObj));
+			} else {
+				log.innerHTML = e.data;
+			}
 		};
 		
 		webSocket.onclose = function() {
