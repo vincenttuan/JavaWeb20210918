@@ -65,12 +65,12 @@
 		
 		<!-- WebSocket Impl: tyrus  -->
 		<dependency>
-            <groupId>org.glassfish.tyrus.bundles</groupId>
-            <artifactId>tyrus-standalone-client-jdk</artifactId>
-            <version>1.13</version>
-        </dependency>
+            		<groupId>org.glassfish.tyrus.bundles</groupId>
+            		<artifactId>tyrus-standalone-client-jdk</artifactId>
+            		<version>1.13</version>
+       		</dependency>
         
-        <!-- https://mvnrepository.com/artifact/org.apache.tomcat/juli -->
+        	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/juli -->
 		<dependency>
 		    <groupId>org.apache.tomcat</groupId>
 		    <artifactId>juli</artifactId>
