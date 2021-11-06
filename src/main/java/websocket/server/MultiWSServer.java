@@ -11,16 +11,21 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import com.github.javafaker.Faker;
+
+import websocket.server.entity.SocketUser;
+
 @ServerEndpoint("/multi/ws/server")
 public class MultiWSServer {
 	
-	private static CopyOnWriteArraySet<Session> sessions = new CopyOnWriteArraySet<Session>();
-	
+	private static CopyOnWriteArraySet<SocketUser> socketUsers = new CopyOnWriteArraySet<>();
+	private Faker faker = new Faker();
 	@OnOpen
 	public void onOpen(Session session) {
 		System.out.println("Client 要求建立連線 session is: " + session.getId());
 		// 加入到 sessions 容器中
-		sessions.add(session);
+		SocketUser socketUser = new SocketUser(faker.name().lastName(), session);
+		socketUsers.add(socketUser);
 		// 回報給 client
 		session.getAsyncRemote().sendText("Server 說: 建立成功, session id: " + session.getId());
 	}
@@ -28,12 +33,13 @@ public class MultiWSServer {
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException {
 		System.out.println("Client 傳送訊息: " + message);
-		String data = "Server 說: %s 有 %d 個字 <span style='font-size: 9px;color: gray;'>(%s)</span>";
-		data = String.format(data, message, message.length(), new Date());
+		SocketUser socketUser = socketUsers.stream().filter(su -> su.getSession().equals(session)).findFirst().get();
+		String data = "%s 說: %s 有 %d 個字 <span style='font-size: 9px;color: gray;'>(%s)</span>";
+		data = String.format(data, socketUser.getName(), message, message.length(), new Date());
 		final String finalData = data;
-		sessions.forEach(s -> {
-				if(s.isOpen()) {
-					s.getAsyncRemote().sendText(finalData);
+		socketUsers.forEach(su -> {
+				if(su.getSession().isOpen()) {
+					su.getSession().getAsyncRemote().sendText(finalData);
 				}
 			}
 		);
@@ -42,7 +48,8 @@ public class MultiWSServer {
 	
 	@OnClose
 	public void onClose(Session session) {
-		sessions.remove(session);
+		SocketUser socketUser = socketUsers.stream().filter(su -> su.getSession().equals(session)).findFirst().get();
+		socketUsers.remove(socketUser);
 		System.out.println("Client 要求關閉連線: " + session.getId());
 	}
 	

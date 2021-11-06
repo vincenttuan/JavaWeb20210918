@@ -71,6 +71,7 @@ window.onload = function() {
 	
 	<input type="text" id="message" name="message">
 	<input type="button" value="Send" id="sendBtn" name="sendBtn">
+	<input type="button" value="Close" id="closeBtn" name="closeBtn">
 	<div id="logs"></div>
 	
 </body>
