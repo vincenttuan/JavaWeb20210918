@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hello WS Client 2</title>
+<title>Multi WS Client</title>
 <script>
 window.onload = function() {
 	var webSocket = null;
@@ -41,7 +41,7 @@ window.onload = function() {
 	
 	//設置WebSocket
 	function setWebSocket() {
-		var url = 'ws://localhost:8080/JavaWeb20210918/hello/ws/server'; 
+		var url = 'ws://localhost:8080/JavaWeb20210918/multi/ws/server'; 
 		// 開始WebSocket連線
 		webSocket = new WebSocket(url);
 		// 以下開始偵測WebSocket的各種事件
